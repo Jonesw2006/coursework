@@ -12,6 +12,10 @@ try {
     echo "Connected Successfully";
 
     }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
 
 
 ?>
