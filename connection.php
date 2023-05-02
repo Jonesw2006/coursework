@@ -1,9 +1,9 @@
 <?php
 //connection page
 $servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "mydb";
+$username = "root";
+$password = "";
+$dbname = "coursework";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

@@ -5,7 +5,7 @@ CREATE TABLE TblPupils
 (pupilID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 pupilEmail VARCHAR(50) NOT NULL,
 pupilPassword VARCHAR(50) NOT NULL,
-pupilForname VARCHAR(50) NOT NULL,
+pupilForename VARCHAR(50) NOT NULL,
 pupilSurname VARCHAR(50) NOT NULL,
 pupilAvGrade INT(3) NOT NULL)
 
@@ -17,7 +17,7 @@ $stmt->execute();
 $stmt = $conn->prepare("DROP TABLE IF EXISTS TblTutors;
 CREATE TABLE TblTutors
 (tutorID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-tutorForname VARCHAR(50) NOT NULL,
+tutorForename VARCHAR(50) NOT NULL,
 tutorSurname VARCHAR(50) NOT NULL,
 tutorLocation VARCHAR(20) NOT NULL,
 tutorRating INT(1) NOT NULL,
@@ -80,7 +80,7 @@ $stmt->execute();
 
 
 
-$stmt = $conn->prepare("INSERT INTO TblPupils (pupilID, pupilEmail, pupilPassword, pupilForename, pupilSurname, pupilAvGrade) VALUES (0001, jones.wb@oundleschool.org.uk, Test123!, Will, Jones, 0 ) ");
+$stmt = $conn->prepare("INSERT INTO TblPupils (pupilID, pupilEmail, pupilPassword, pupilForename, pupilSurname, pupilAvGrade) VALUES ('0001', 'jones.wb@oundleschool.org.uk', 'Test123!', 'Will', 'Jones', '0' ) ");
 $stmt->execute();
 
 ?>
