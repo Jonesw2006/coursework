@@ -3,10 +3,15 @@
 <html>
 <head>
 
-    <title>Sign Up</title>
+    <title>Login</title>
 
 </head>
+<div class="topnav">
+    <a class="active" href="home.php">Home</a>
+    <a href="pupillogin.php">Login</a>
+    <a href="pupilsignup.php">Sign Up</a>
 
+</div>
 <body>
 
 
