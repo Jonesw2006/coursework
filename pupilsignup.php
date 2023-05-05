@@ -9,7 +9,6 @@
 <div class="topnav">
     <a class="active" href="home.php">Home</a>
     <a href="pupillogin.php">Login</a>
-    <a href="pupilsignup.php">Sign Up</a>
 
 </div>
 <body>
@@ -21,7 +20,8 @@
     First Name *:<input type="text" name="pupilForename"><br>
     Last Name *:<input type="text" name="pupilSurname"><br>
     Password *:<input type="password" name="pupilPassword"><br>
-    Email (optional):<input type="text" name="pupilEmail"><br>
+    Email *:<input type="text" name="pupilEmail"><br>
+
     
     <input type="submit" value="Create Account">
     <p></p>

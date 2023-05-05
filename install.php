@@ -11,6 +11,7 @@ pupilAvGrade INT(3) NOT NULL)
 
 
 ");
+//This creates the pupil table
 $stmt->execute();
 
 
@@ -28,6 +29,7 @@ tutorDescription VARCHAR(300) NOT NULL)
 
 
 ");
+//This creates the Tutor table
 $stmt->execute();
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS TblReview;
@@ -42,6 +44,7 @@ reviewContent VARCHAR(500))
 
 
 ");
+//This creates the review table
 $stmt->execute();
 
 
@@ -61,6 +64,7 @@ online BOOLEAN)
 
 
 ");
+//This creates the basket table
 $stmt->execute();
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS TblReport;
@@ -76,6 +80,7 @@ CREATE TABLE TblReport
 
 
 ");
+//This creates the report table
 $stmt->execute();
 
 

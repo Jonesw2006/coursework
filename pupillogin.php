@@ -8,7 +8,7 @@
 </head>
 <div class="topnav">
     <a class="active" href="home.php">Home</a>
-    <a href="pupillogin.php">Login</a>
+    
     <a href="pupilsignup.php">Sign Up</a>
 
 </div>
@@ -17,16 +17,15 @@
 
 
 
-<form action="addpupils.php">
-    First Name *:<input type="text" name="pupilForename"><br>
-    Last Name *:<input type="text" name="pupilSurname"><br>
-    Password *:<input type="password" name="pupilPassword"><br>
-    Email (optional):<input type="text" name="pupilEmail"><br>
+<form action="loginprocess.php" method= "POST">
+    Email:<input type="text" name="pupilEmail"><br>
+    Password:<input type="password" name="pupilPassword"><br>
     
-    <input type="submit" value="Create Account">
+    
+    <input type="submit" value="Login">
     <p></p>
-    <!--Sends user to the login page--> 
-    Already have an account? <a href="localhost/coursework/login.php">Log in</a>
+    <!--Sends user to the sign up page--> 
+    Don't have an account? <a href="pupilsignup.php">Sign up</a>
 </form>
 
 </body>
