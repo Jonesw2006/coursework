@@ -4,15 +4,40 @@
 <head>
 
     <title>Login</title>
-
+    <!-- Linking the CSS style sheet-->
+    <link rel="stylesheet" href="stylesheet.css" />
 </head>
-<div class="topnav">
-    <a class="active" href="home.php">Home</a>
-    
-    <a href="pupilsignup.php">Sign Up</a>
 
-</div>
+
+
 <body>
+<nav class="navbar">
+
+    <div class="logo">LOGO</div>
+
+
+    <!-- creating the navigation bar-->
+    <ul class="navlinks">
+        <div class="menu">
+            <li><a href="home.php">Home</a></li>
+            <li><a href="search.php">Search</a></li>
+
+            <li class="tutors">
+                
+                <a href="tutorspace.php">Tutor Space</a>
+
+                
+            </li>
+
+        
+
+            
+            <!-- Sign up link as login link removed as it is the page the user is currently on -->
+            
+            <li><a href="pupilsignup.php">Sign Up</a></li>
+        </div>
+    </ul>
+    </nav>
 
 
 
