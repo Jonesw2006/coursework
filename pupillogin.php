@@ -19,7 +19,7 @@
     <!-- creating the navigation bar-->
     <ul class="navlinks">
         <div class="menu">
-            <li><a href="home.php">Home</a></li>
+            <li><a href="pupilprofile.php">Home</a></li>
             <li><a href="search.php">Search</a></li>
 
             <li class="tutors">
