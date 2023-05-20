@@ -4,7 +4,8 @@ array_map("htmlspecialchars", $_POST);
 $stmt = $conn->prepare("SELECT * FROM TblPupils WHERE pupilEmail =:pupilEmail ;");
 $stmt->bindParam(':pupilEmail', $_POST['pupilEmail']);
 $stmt->execute();
-#does pupil exist?
+
+
 
 
 
@@ -12,16 +13,17 @@ $stmt->execute();
     {
        
         if($row['pupilPassword']== $_POST['pupilPassword']){
-            header('Location: home.php');
+            #sends user to their profile page when both feilds are entered correctly
+            header('Location: pupilprofile.php');
             
         }else{
-    
+            #if password is wrong then sends back to login page
             header('Location: pupillogin.php');
             
         }
 }
 
 
-
-$conn=null;
+#if email does not exist then sends back to login page
+header('Location: pupillogin.php');
 ?>
