@@ -34,7 +34,7 @@
             
             <!-- Sign up link as login link removed as it is the page the user is currently on -->
             
-            <li><a href="pupilsignup.php">Sign Up</a></li>
+            <li><a href="tutorsignup.php">Sign Up</a></li>
         </div>
     </ul>
     </nav>
