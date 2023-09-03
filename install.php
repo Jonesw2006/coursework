@@ -20,6 +20,8 @@ CREATE TABLE TblTutors
 (tutorID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 tutorForename VARCHAR(50) NOT NULL,
 tutorSurname VARCHAR(50) NOT NULL,
+tutorEmail VARCHAR(50) NOT NULL,
+tutorPassword VARCHAR(50) NOT NULL,
 tutorLocation VARCHAR(20) NOT NULL,
 tutorRating INT(1) NOT NULL,
 tutorSubject VARCHAR(20) NOT NULL,

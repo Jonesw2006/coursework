@@ -4,7 +4,7 @@
 <head>
 
     <title>Template</title>
-    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="stylesheet.css"/>
 </head>
 <body>
     <nav class="navbar">
@@ -24,6 +24,7 @@
 
                 
             </li>
+    
 
         
 
@@ -34,13 +35,41 @@
         </div>
     </ul>
     </nav>
-    <?php
+    <input type="text" id="input" onkeyup="search()" placeholder="Subject...">
+    <Script>
+        function search() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("tutors");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                } 
+            }
+
+
+
+        }
+    
+    </script>
+
+
+    </script>
+        <?php
     include_once ("connection.php");
     $table = "SELECT * FROM tbltutors";
     $result = $conn->query($table);
-
+    
     if ($result->rowCount() > 0) {
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)){
         echo "<table border='1'>";
 
         echo "<tr>";
@@ -49,23 +78,31 @@
         echo "<th>Rating</th>";
         echo "<th>Subject</th>";
         echo "</tr>";
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+        
+
 
         
         echo "<tr>";
-        echo "<td>" . $row["tutorForename"] . "</td>";
+        
+        echo "<td><a href='tutorprofile.php'>" . $row["tutorForename"] . "</a></td>";
         echo "<td>" . $row["tutorLocation"] . "</td>";
         echo "<td>" . $row["tutorRating"] . "</td>";
         echo "<td>" . $row["tutorSubject"] . "</td>";
         echo "</tr>";
         
 
-        echo "</table>";
+        
 
 
         }
+        echo "</table>";
     }
     
     ?>
+
+
 
 
 
