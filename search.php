@@ -85,11 +85,12 @@
 
         
         echo "<tr>";
-        
-        echo "<td><a href='tutorprofile.php'>" . $row["tutorForename"] . "</a></td>";
+        echo $temprow = $row ++ 1;
+        echo "<td> <a href='tutorprofile.php?tutorid= >". $temprow["tutorID"] . $row["tutorForename"] . "</a></td>";
         echo "<td>" . $row["tutorLocation"] . "</td>";
         echo "<td>" . $row["tutorRating"] . "</td>";
         echo "<td>" . $row["tutorSubject"] . "</td>";
+        //echo "</a>";
         echo "</tr>";
         
 
