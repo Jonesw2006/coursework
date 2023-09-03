@@ -7,6 +7,11 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+p {
+    font-size: 30px;
+    text-align: center;
+
+}
 
 a {
     text-decoration: none;
@@ -19,6 +24,7 @@ li {
 h1 {
     text-align: center;
     color: #53b3c0;
+    background-color: #e0f3f6;
 }
 
 th, td {
@@ -41,7 +47,16 @@ input[type=text] {
     margin-top: 5px;
     font-size: 15px;
 } 
+footer {
 
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    background-color: #BDDADE;
+    color: #e0f3f6;
+
+}
 
 
 

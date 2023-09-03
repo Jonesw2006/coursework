@@ -9,7 +9,7 @@
 <body>
 <nav class="navbar">
 
-<div class="logo">LOGO</div>
+<div class="logo">TutorSpace</div>
 
 
 <!-- creating the navigation bar-->
@@ -36,8 +36,15 @@
 </nav>
 
 
-<h1> Tutoring Website </h1>
-
+<h1> Oundle's Tutoring Website! </h1>
+<img src="books1.webp" style="width:100%;height:450px;">
+<h1><a href="search.php">Start Searching Now!</a></h1>
+<p>
+    This website was created as an easy way to find tutors in any location and a large amount of different subjects which are available, Click Above to start your search!
+</p>
+<footer>
+    <h4>Author: Will Jones │ Oundle School </h4>
+</footer>
 </body>
 
 
