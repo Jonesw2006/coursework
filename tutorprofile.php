@@ -37,10 +37,17 @@
 
 
     <div>
+        <?php
+            # getting the tutorID from the get command on the search page
+            $tutorID = ($_GET["tutorID"]);
+            echo "$tutorID";
+            
 
-
+        ?>
 
     <div> 
+
+
 
 
 

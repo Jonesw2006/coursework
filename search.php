@@ -37,6 +37,7 @@
     </nav>
     <input type="text" id="input" onkeyup="search()" placeholder="Subject...">
     <Script>
+        //starting of javascript and declaring the search function
         function search() {
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("input");
@@ -45,6 +46,7 @@
             tr = table.getElementsByTagName("tr");
 
             for (i = 0; i < tr.length; i++) {
+                // the number on the end of this line below sets to what data location the search function searches
                 td = tr[i].getElementsByTagName("td")[3];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
@@ -70,8 +72,9 @@
     $result = $conn->query($table);
     
     if ($result->rowCount() > 0) {
+        #this sets the table's id 
         echo "<table border='1' id='tutors'>";
-
+        #This creates the table titles, for the search table
         echo "<tr>";
         echo "<th>Name</th>";
         echo "<th>Location</th>";
@@ -87,11 +90,13 @@
         
         echo "<tr>";
         
-       
+       #this displays each value for each tutor in the table
         echo "<td>" . $row["tutorForename"] . "</td>";
         echo "<td>" . $row["tutorLocation"] . "</td>";
         echo "<td>" . $row["tutorRating"] . "</td>";
         echo "<td>" . $row["tutorSubject"] . "</td>";
+        #this link sends the user to the tutor profile page while also sending the actual variable
+        #of the tutor id so that the user ends up on their desired page
         echo '<td><a href="tutorprofile.php?tutorID=' . $row["tutorID"] . '"> More!</td>';
         echo "</tr>";
         
