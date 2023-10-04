@@ -1,4 +1,10 @@
 <!DOCTYPE HTML>
+
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <!--Declaring what document type this is -->
 <html>
 <head>
@@ -38,9 +44,7 @@
 
     <div>
         <?php
-            # getting the tutorID from the get command on the search page
-            $tutorID = ($_GET["tutorID"]);
-            echo "$tutorID";
+
             
 
         ?>
@@ -48,9 +52,26 @@
     <div> 
 
 
+    <div class="column_1">
+        <?php 
+        include_once ("connection.php");
+        # getting the tutorID from the get command on the search page
+        $tutorID = ($_GET["tutorID"]);
+        #echo $tutorID;
+        $stmt1 = $conn->prepare("SELECT * FROM TblTutors WHERE tutorID =:tutorID ;");
+        $stmt1->bindParam(':tutorID', $tutorID);
+        $stmt1->execute();
 
 
+        while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
+        {
+        print_r($row["tutorForename"]);
+        }
 
+
+        ?>
+
+    
 
 
 
