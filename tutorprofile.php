@@ -42,43 +42,33 @@
     </nav>
 
 
-    <div>
-        <?php
-
-            
-
-        ?>
-
-    <div> 
-
-
-    <div class="column_1">
-        <?php 
-        include_once ("connection.php");
-        # getting the tutorID from the get command on the search page
-        $tutorID = ($_GET["tutorID"]);
-        #echo $tutorID;
-        $stmt1 = $conn->prepare("SELECT * FROM TblTutors WHERE tutorID =:tutorID ;");
-        $stmt1->bindParam(':tutorID', $tutorID);
-        $stmt1->execute();
-
-
-        while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
-        {
-        print_r($row["tutorForename"]);
-        }
-
-
-        ?>
 
     
 
 
+    <div class="col-sm-4">
+        <h2>
+            <?php 
+            include_once ("connection.php");
+            # getting the tutorID from the get command on the search page
+            $tutorID = ($_GET["tutorID"]);
+            #echo $tutorID;
+            $stmt1 = $conn->prepare("SELECT * FROM TblTutors WHERE tutorID =:tutorID ;");
+            $stmt1->bindParam(':tutorID', $tutorID);
+            $stmt1->execute();
 
 
+            while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
+            {
+            print_r($row["tutorForename"]);
+            }
 
-
-
+        
+            ?>
+            
+        </h2>
+    </div>
+    
 
 <footer>
     <h4>Author: Will Jones │ Oundle School </h4>
