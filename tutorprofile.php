@@ -44,7 +44,7 @@
 
 
     
-
+                                                                                                                        
 
     <div class="col-sm-4">
         <h2>
@@ -61,10 +61,27 @@
             while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
             {
             print_r($row["tutorForename"]);
+            
+
+
+            #gets the photo which corressponds to the tutorID
+            
+            
+            
+            
+
+            echo ('<img class="image" src="images/' . $row['image'] . '" alt="' . $row['tutorID'] . '"><br><br>');
+            print_r($row["tutorDescription"]);
+            print_r($row["tutorRating"]);
+            print_r($row["tutorLocation"]);
             }
 
         
             ?>
+
+
+
+
             
         </h2>
     </div>
