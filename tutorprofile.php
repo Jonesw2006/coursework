@@ -72,17 +72,19 @@
 
             echo ('<img class="image" src="images/' . $row['image'] . '" alt="' . $row['tutorID'] . '"><br><br>');
             print_r($row["tutorDescription"]);
-            print_r($row["tutorRating"]);
+            #print_r($row["tutorRating"]);
+            #gets the corresponding photo of the amount of stars which the tutor has on their profile
+            echo ('<img class="image" src="rateimg/' . $row['tutorRating'] . '" alt="' . $row['tutorID'] . '"><br><br>');
             print_r($row["tutorLocation"]);
+
+            #sends user to the checkout page with the tutors id attached to the link
+            echo '<a class="order" href="checkout.php?tutorID=' . $row["tutorID"] . '"> Book Now!';
             }
 
-        
             ?>
+            <br>
 
-
-
-
-            
+        </br>
         </h2>
     </div>
     

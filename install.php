@@ -23,7 +23,7 @@ tutorSurname VARCHAR(50) NOT NULL,
 tutorEmail VARCHAR(50) NOT NULL,
 tutorPassword VARCHAR(50) NOT NULL,
 tutorLocation VARCHAR(20) NOT NULL,
-tutorRating INT(1) NOT NULL,
+tutorRating VARCHAR(5) NOT NULL,
 tutorSubject VARCHAR(20) NOT NULL,
 tutorDescription VARCHAR(300) NOT NULL,
 image VARCHAR(50) NOT NULL)
