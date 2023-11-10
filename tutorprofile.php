@@ -46,7 +46,7 @@
     
                                                                                                                         
 
-    <div class="col-sm-4">
+    
         <h2>
             <?php 
             include_once ("connection.php");
@@ -61,7 +61,8 @@
             while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
             {
             print_r($row["tutorForename"]);
-            
+
+            echo "\n";
 
 
             #gets the photo which corressponds to the tutorID
@@ -71,7 +72,10 @@
             
 
             echo ('<img class="image" src="images/' . $row['image'] . '" alt="' . $row['tutorID'] . '"><br><br>');
+            
+
             print_r($row["tutorDescription"]);
+            
             #print_r($row["tutorRating"]);
             #gets the corresponding photo of the amount of stars which the tutor has on their profile
             echo ('<img class="image" src="rateimg/' . $row['tutorRating'] . '" alt="' . $row['tutorID'] . '"><br><br>');
@@ -86,7 +90,6 @@
 
         </br>
         </h2>
-    </div>
     
 
 <footer>
