@@ -39,11 +39,13 @@
 
 
 <!--login process -->
-<form action="addpupils.php">
-    First Name *:<input type="text" name="pupilForename"><br>
-    Last Name *:<input type="text" name="pupilSurname"><br>
-    Password *:<input type="password" name="pupilPassword"><br>
-    Email *:<input type="text" name="pupilEmail"><br>
+<form action="addpupils.php" method="post">
+    <!--Form links to the addpupils.php process when posted -->
+    First Name *:<input type="text" name="pupilforename"><br>
+    Last Name *:<input type="text" name="pupilsurname"><br>
+    Password *:<input type="password" name="pupilpassword"><br>
+    <!-- using the type password means that it will not be seen by other people on the screen when typing into the interface -->
+    Email *:<input type="text" name="pupilemail"><br>
 
     
     <input type="submit" value="Create Account">
@@ -55,5 +57,8 @@
     Are you a tutor? <a href="tutorspace.php">Visit Tutor Space</a>
 </form>
 
+
+
 </body>
 </html>
+
