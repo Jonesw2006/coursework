@@ -1,8 +1,9 @@
 <?php
+session_start();
 include_once ("connection.php");
 array_map("htmlspecialchars", $_POST);
-$stmt = $conn->prepare("SELECT * FROM TblPupils WHERE pupilEmail =:pupilEmail ;");
-$stmt->bindParam(':pupilEmail', $_POST['pupilEmail']);
+$stmt = $conn->prepare("SELECT * FROM tblPupils WHERE pupilemail =:pupilemail ;");
+$stmt->bindParam(':pupilemail', $_POST['pupilEmail']);
 $stmt->execute();
 
 

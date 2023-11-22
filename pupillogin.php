@@ -43,8 +43,8 @@
 
 
 <form action="loginprocess.php" method= "POST">
-    Email:<input type="text" name="pupilEmail"><br>
-    Password:<input type="password" name="pupilPassword"><br>
+    Email:<input type="text" name="pupilemail"><br>
+    Password:<input type="password" name="pupilpassword"><br>
     
     
     <input type="submit" value="Login">

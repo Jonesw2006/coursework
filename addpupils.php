@@ -10,12 +10,13 @@ try{
 	array_map("htmlspecialchars", $_POST);
     
 
-    
+    $hashed_password = password_hash($_POST["pupilpassword"], PASSWORD_DEFAULT);
 	
 	$stmt = $conn->prepare("INSERT INTO tblpupils (pupilID,pupilEmail,pupilPassword,pupilForename,pupilSurname)VALUES (NULL,:pupilemail,:pupilpassword,:pupilforename,:pupilsurname)");
 	$stmt->bindParam(':pupilemail', $_POST["pupilemail"]);
-    $stmt->bindParam(':pupilpassword', $_POST["pupilpassword"]);
+    
     $stmt->bindParam(':pupilforename', $_POST["pupilforename"]);
+	$stmt->bindParam(':pupilpassword', $hashed_password);
   
     $stmt->bindParam(':pupilsurname', $_POST["pupilsurname"]);
 
