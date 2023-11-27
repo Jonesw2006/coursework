@@ -2,8 +2,9 @@
 session_start();
 include_once ("connection.php");
 array_map("htmlspecialchars", $_POST);
-$stmt = $conn->prepare("SELECT * FROM tblPupils WHERE pupilemail =:pupilemail ;");
-$stmt->bindParam(':pupilemail', $_POST['pupilEmail']);
+print_r($_POST);
+$stmt = $conn->prepare("SELECT * FROM tblPupils WHERE pupilemail =:pupilEmail ;");
+$stmt->bindParam(':pupilEmail', $_POST['pupilEmail']);
 $stmt->execute();
 
 
@@ -12,18 +13,29 @@ $stmt->execute();
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
     {
-       
-        if($row['pupilPassword']== $_POST['pupilPassword']){
-            #sends user to their profile page when both feilds are entered correctly
-            header('Location: pupilprofile.php');
-            
-        }else{
-            #if password is wrong then sends back to login page
-            header('Location: pupillogin.php');
-            
-        }
-}
+        $hashed= $row['pupilPassword'];
+        $attempt= $_POST['Pword'];
+        if(password_verify($attempt,$hashed)){
 
+
+            $_SESSION['loggedinID']=$row["PupilID"];
+
+            if (!isset($_SESSION['backURL'])){
+
+                $backURL = "home.php";
+
+            
+            }else{
+                $backURL=$_SESSION['backURL'];
+            }
+
+
+            header('Location: ' . $backURL);
+            unset($_SESSION['backURL']);
+        }
+       
+        
+}
 
 #if email does not exist then sends back to login page
 header('Location: pupillogin.php');

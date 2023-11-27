@@ -13,7 +13,12 @@ try{
 	$stmt->bindParam(':tutorSubject', $_POST["tutorSubject"]);
 	$stmt->bindParam(':tutorID', $_POST["tutorID"]);
 
+
 	$stmt->execute();
+	$target_dir = "images/";
+	print_r($_FILES);
+	$target_file = $target_dir . basename($_FILES["piccy"]["name"]);
+	#cont./,fnhdgfed
 	}
 catch(PDOException $e)
 {
