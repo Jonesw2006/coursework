@@ -46,6 +46,9 @@
     Password *:<input type="password" name="tutorpassword"><br>
     <!-- using the type password means that it will not be seen by other people on the screen when typing into the interface -->
     Email *:<input type="text" name="tutoremail"><br>
+    Location:<input type="text" name="tutorlocation"><br>
+    Description:<input type="text" name="tutordescription"><br>
+    Subject:<input type="text" name="tutorsubject"><br>
     Image: <input type="file" id="piccy" name="piccy" accept="image/*"><br>
 
     

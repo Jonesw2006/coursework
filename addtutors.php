@@ -12,19 +12,18 @@ try{
     $hashed_password = password_hash($_POST["tutorpassword"], PASSWORD_DEFAULT);
 
 	# adding values to tutor table
-	$stmt = $conn->prepare("INSERT INTO TblTutors (tutorID,tutorForename,tutorSurname,tutorEmail,tutorPassword,tutorLocation,tutorSubject,tutorDescription,Image,tutorRating)
-	VALUES (NULL,:tutorForename,:tutorSurname,:tutorEmail,:tutorPassword,:tutorLocation,:tutorSubject,:tutorDescription,:Pic,NULL)");
+	$stmt = $conn->prepare("INSERT INTO TblTutors (tutorID,tutorForename,tutorSurname,tutorEmail,tutorPassword,tutorLocation,tutorSubject,tutorDescription,Image,tutorRating)VALUES (NULL,:tutorforename,:tutorsurname,:tutoremail,:tutorpassword,:tutorlocation,:tutorsubject,:tutordescription,:pic,NULL)");
 
-	
-	$stmt->bindParam(':tutorSubject', $_POST["tutorSubject"]);
+
+	$stmt->bindParam(':tutorsubject', $_POST["tutorSubject"]);
 	$stmt->bindParam(':tutorID', $_POST["tutorID"]);
-	$stmt->bindParam(':tutorSurname', $_POST["tutorSurname"]);
-	$stmt->bindParam(':tutorEmail', $_POST["tutorSurname"]);
-	$stmt->bindParam(':tutorPassword', $hashed_password);
-	$stmt->bindParam(':tutorLocation', $_POST["tutorLocation"]);
-	$stmt->bindParam(':tutorSubject', $_POST["tutorSubject"]);
-	$stmt->bindParam(':tutorDescription', $_POST["tutorDescription"]);
-	$stmt->bindParam(':Pic', $_FILES["piccy"]["name"]);
+	$stmt->bindParam(':tutorsurname', $_POST["tutorSurname"]);
+	$stmt->bindParam(':tutoremail', $_POST["tutorSurname"]);
+	$stmt->bindParam(':tutorpassword', $hashed_password);
+	$stmt->bindParam(':tutorlocation', $_POST["tutorLocation"]);
+	$stmt->bindParam(':tutorsubject', $_POST["tutorSubject"]);
+	$stmt->bindParam(':tutordescription', $_POST["tutorDescription"]);
+	$stmt->bindParam(':pic', $_FILES["piccy"]["name"]);
 	
 
 	$stmt->execute();
