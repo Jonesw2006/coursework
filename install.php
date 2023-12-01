@@ -56,12 +56,7 @@ CREATE TABLE TblBasket
 (orderID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 pupilID INT(4) NOT NULL,
 tutorID INT(4) NOT NULL,
-addressLine1 VARCHAR(50) NOT NULL,
-addressLine2 VARCHAR(50) NOT NULL,
-addressLine3 VARCHAR(50) NOT NULL,
-postcode VARCHAR(10) NOT NULL,
-date DATETIME NOT NULL,
-online BOOLEAN)
+date VARCHAR(30))
 
 
 
@@ -70,20 +65,9 @@ online BOOLEAN)
 //This creates the basket table
 $stmt->execute();
 
-$stmt = $conn->prepare("DROP TABLE IF EXISTS TblReport;
-CREATE TABLE TblReport
- (reportID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
- tutorID INT(4) NOT NULL,
- pupilID INT(4) NOT NULL,
- grade INT(3) NOT NULL,
- reportContent VARCHAR(1000),
- date DATETIME NOT NULL)
 
 
 
-
-");
-//This creates the report table
 $stmt->execute();
 
 
