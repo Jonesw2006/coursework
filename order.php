@@ -6,4 +6,5 @@ print_r($_SESSION);
 try{
 
     include_once('connection.php')
+    array_map("htmlspecialchars", $_POST)
 }

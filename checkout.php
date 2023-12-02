@@ -45,11 +45,13 @@
             $stmt1->execute();
 
 
-            while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
-            {
-
-                print_r($row["tutorForename"]);
-            }
+            #while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
+            #{
+#
+ #               print_r($row["tutorForename"]);
+  #              print_r($row["tutorEmail"])
+   #             
+    #        }
 
 
 

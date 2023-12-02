@@ -46,55 +46,66 @@
     
                                                                                                                         
 
+        <div class="container">
+            <h1>Tutor Description</h1>
+            <div class="row">
+                
+                <h2>
+                    <?php 
+                    include_once ("connection.php");
+                    # getting the tutorID from the get command on the search page
+                    $tutorID = ($_GET["tutorID"]);
+                    #echo $tutorID;
+                    $stmt1 = $conn->prepare("SELECT * FROM TblTutors WHERE tutorID =:tutorID ;");
+                    $stmt1->bindParam(':tutorID', $tutorID);
+                    $stmt1->execute();
+
+
+                    while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
+                    {
+                    print_r($row["tutorForename"]);
+
+                    echo "\n";
+
+
+                    #gets the photo which corressponds to the tutorID
+                    
+                    
+                    
+                    
+
+                    echo ('<img class="image" src="images/' . $row['image'] . '" alt="' . $row['tutorID'] . '"><br><br>');
+                    
+
+                    print_r($row["tutorDescription"]);
+                    
+                    #print_r($row["tutorRating"]);
+                    #gets the corresponding photo of the amount of stars which the tutor has on their profile
+                    echo ('<img class="image" src="rateimg/' . $row['tutorRating'] . '" alt="' . $row['tutorID'] . '"><br><br>');
+                    print_r($row["tutorLocation"]);
+
+                    #sends user to the checkout page with the tutors id attached to the link
+                    echo '<a class="order" href="checkout.php?tutorID=' . $row["tutorID"] . '"> Book Now!';
+                    }
+
+                    ?>
+                    <br>
+
+                </br>
+
+        <form method="post" action="sendreview.php">
+            <label for="rating">Rating:</label>
+            <input type="number" name="rating" min="1" max="5" required>
+            <label for="text">Comment:</label>
+            <textarea name="comment" rows="3"></textarea>
+            <input type="hidden" name="tutorID" value="tutorID">
+            <input type="submit" value="Send Review">
     
-        <h2>
-            <?php 
-            include_once ("connection.php");
-            # getting the tutorID from the get command on the search page
-            $tutorID = ($_GET["tutorID"]);
-            #echo $tutorID;
-            $stmt1 = $conn->prepare("SELECT * FROM TblTutors WHERE tutorID =:tutorID ;");
-            $stmt1->bindParam(':tutorID', $tutorID);
-            $stmt1->execute();
 
-
-            while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
-            {
-            print_r($row["tutorForename"]);
-
-            echo "\n";
-
-
-            #gets the photo which corressponds to the tutorID
-            
-            
-            
-            
-
-            echo ('<img class="image" src="images/' . $row['image'] . '" alt="' . $row['tutorID'] . '"><br><br>');
-            
-
-            print_r($row["tutorDescription"]);
-            
-            #print_r($row["tutorRating"]);
-            #gets the corresponding photo of the amount of stars which the tutor has on their profile
-            echo ('<img class="image" src="rateimg/' . $row['tutorRating'] . '" alt="' . $row['tutorID'] . '"><br><br>');
-            print_r($row["tutorLocation"]);
-
-            #sends user to the checkout page with the tutors id attached to the link
-            echo '<a class="order" href="checkout.php?tutorID=' . $row["tutorID"] . '"> Book Now!';
-            }
-
-            ?>
-            <br>
-
-        </br>
         </h2>
-    
 
-<footer>
-    <h4>Author: Will Jones │ Oundle School </h4>
-</footer>
+      
+
 
 </body>
 
