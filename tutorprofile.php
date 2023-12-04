@@ -45,10 +45,10 @@
 
     
                                                                                                                         
-
-        <div class="container">
+    <div class="containter">
+        <div class="row">
             <h1>Tutor Description</h1>
-            <div class="row">
+            <div class="col-sm-6">
                 
                 <h2>
                     <?php 
@@ -92,17 +92,22 @@
                     <br>
 
                 </br>
+            </div>
 
-        <form method="post" action="sendreview.php">
-            <label for="rating">Rating:</label>
-            <input type="number" name="rating" min="1" max="5" required>
-            <label for="text">Comment:</label>
-            <textarea name="comment" rows="3"></textarea>
-            <input type="hidden" name="tutorID" value="tutorID">
-            <input type="submit" value="Send Review">
-    
+            <div class="col-sm-3">            
+                <form method="post" action="sendreview.php">
+                    <label for="rating">Rating:</label>
+                    <input type="number" name="rating" min="1" max="5" required>
+                    <label for="text">Comment:</label>
+                    <textarea name="comment" rows="3"></textarea>
+                    <input type="hidden" name="tutorID" value="tutorID">
+                    <input type="submit" value="Send Review">
+            </div>        
 
         </h2>
+
+        </div>
+    </div>
 
       
 
