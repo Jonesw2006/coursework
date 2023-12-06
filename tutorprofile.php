@@ -44,8 +44,8 @@
 
 
     
-                                                                                                                        
-    <div class="containter">
+    <!--using bootstrap to increase readability of page, 04/12/23 - fixed-->                                                                                                                    
+    <div class="container">
         <div class="row">
             <h1>Tutor Description</h1>
             <div class="col-sm-6">
@@ -66,52 +66,35 @@
                     print_r($row["tutorForename"]);
 
                     echo "\n";
-
-
                     #gets the photo which corressponds to the tutorID
-                    
-                    
-                    
-                    
-
                     echo ('<img class="image" src="images/' . $row['image'] . '" alt="' . $row['tutorID'] . '"><br><br>');
-                    
-
                     print_r($row["tutorDescription"]);
-                    
+
                     #print_r($row["tutorRating"]);
                     #gets the corresponding photo of the amount of stars which the tutor has on their profile
                     echo ('<img class="image" src="rateimg/' . $row['tutorRating'] . '" alt="' . $row['tutorID'] . '"><br><br>');
                     print_r($row["tutorLocation"]);
 
                     #sends user to the checkout page with the tutors id attached to the link
-                    echo '<a class="order" href="checkout.php?tutorID=' . $row["tutorID"] . '"> Book Now!';
+                    echo '<a class="order" href="checkout.php?tutorID=' . $row["tutorID"] . '"> Book Now!</a>';
                     }
-
                     ?>
                     <br>
-
                 </br>
             </div>
-
-            <div class="col-sm-3">            
+            <!--divides the page into two -->
+            <div class="col-sm-6">            
                 <form method="post" action="sendreview.php">
                     <label for="rating">Rating:</label>
-                    <input type="number" name="rating" min="1" max="5" required>
+                    <input type="number" name="stars" min="1" max="5" required>
                     <label for="text">Comment:</label>
-                    <textarea name="comment" rows="3"></textarea>
+                    <textarea name="reviewcontent" rows="3"></textarea>
                     <input type="hidden" name="tutorID" value="tutorID">
                     <input type="submit" value="Send Review">
             </div>        
-
         </h2>
-
         </div>
     </div>
-
-      
-
-
 </body>
 
 
