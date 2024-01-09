@@ -1,31 +1,26 @@
 <?php
-header('Location:tutorprofile.php');
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-try{
-	include_once('connection.php');
-	array_map("htmlspecialchars", $_POST);
-
-	
-   
-
-	# adding review values to tutor table
-	$stmt = $conn->prepare("INSERT INTO TblReview (reviewID, tutorID, pupilID, stars, reviewContent)VALUES (NULL, :tutorID, :pupilID, :stars, :reviewcontent)");
+session_start();
+include_once("connection.php");
 
 
-	$stmt->bindParam(':tutorID', $_POST["tutorID"]);
-    $stmt->bindParam(':pupilID', $_POST["pupilID"]);
-    $stmt->bindParam(':stars', $_POST["stars"]);
-    $stmt->bindParam(':reviewcontent', $_POST["reviewcontent"]);
-	
-	$stmt->execute();
-	}
-catch(PDOException $e)
-{
-    echo "error".$e->getMessage();
-}
-$conn=null;
+$tutorID = intval($_POST['tutorID']);
+$rating = intval($_POST['stars']); 
+$comment = htmlspecialchars($_POST['reviewContent']);
+
+$pupilID = $_SESSION['loggedinID']; // takes pupilid from the login page
+
+// Insert the review into the database
+$stmt = $conn->prepare("INSERT INTO Tblreview (tutorID, pupilID, stars, reviewContent) VALUES (:tutorID, :pupilID, :stars, :reviewContent)");
+$stmt->bindParam(':tutorID', $tutorID);
+$stmt->bindParam(':pupilID', $pupilID);
+$stmt->bindParam(':stars', $stars);
+$stmt->bindParam(':reviewContent', $reviewContent);
+
+$stmt->execute();
+
+// Redirect to the tutor's profile page or wherever is appropriate
+header("Location: tutorprofile.php?tutorID=" . $tutorID);
+exit();
 ?>
 
 

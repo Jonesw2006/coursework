@@ -38,7 +38,7 @@
 
 
 
-<!--login process -->
+<!--signup process -->
 <form action="addtutors.php" method="post" enctype="multipart/form-data"> <!-- the enctype ensures that files can be uploaded --> 
     <!--Form links to the addpupils.php process when posted -->
     First Name *:<input type="text" name="tutorforename"><br>
@@ -49,7 +49,7 @@
     Location:<input type="text" name="tutorlocation"><br>
     Description:<input type="text" name="tutordescription"><br>
     Subject:<input type="text" name="tutorsubject"><br>
-    Image: <input type="file" id="piccy" name="piccy" accept="image/*"><br>
+    Image: <input type="file" id="image" name="piccy" accept="image/*"><br> 
 
     
     <input type="submit" value="Create Account">

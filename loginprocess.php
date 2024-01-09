@@ -1,42 +1,38 @@
 <?php
+
 session_start();
-include_once ("connection.php");
-array_map("htmlspecialchars", $_POST);
-print_r($_POST);
-$stmt = $conn->prepare("SELECT * FROM tblPupils WHERE pupilemail =:pupilEmail ;");
-$stmt->bindParam(':pupilEmail', $_POST['pupilEmail']);
-$stmt->execute();
+include_once("connection.php");
 
 
+$pupilEmail = htmlspecialchars($_POST['pupilEmail'] ?? '');
+$Pword = htmlspecialchars($_POST['Pword'] ?? '');
 
+// Check if email and password are provided
+if (!empty($pupilEmail) && !empty($Pword)) {
+    $stmt = $conn->prepare("SELECT pupilID, pupilPassword, pupilForename, pupilSurname FROM tblpupils WHERE pupilEmail = :pupilEmail");
+    $stmt->bindParam(':pupilEmail', $pupilEmail);
+    $stmt->execute();
 
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $hashed = $row['pupilPassword'];
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-    {
-        $hashed= $row['pupilPassword'];
-        $attempt= $_POST['Pword'];
-        if(password_verify($attempt,$hashed)){
+        if (password_verify($Pword, $hashed)) {
+            //Store user information in session
+            $_SESSION['loggedinID'] = $row['pupilID'];
+          
 
-
-            $_SESSION['loggedinID']=$row["PupilID"];
-
-            if (!isset($_SESSION['backURL'])){
-
-                $backURL = "home.php";
-
-            
-            }else{
-                $backURL=$_SESSION['backURL'];
-            }
-
-
-            header('Location: ' . $backURL);
-            unset($_SESSION['backURL']);
+            //goes to the home page if sucsessful 
+            header("Location: home.php");
+            exit();
+        } else {
+            header("Location: pupillogin.php"); // Incorrect password
+            exit();
         }
-       
-        
+    }
 }
 
-#if email does not exist then sends back to login page
-header('Location: pupillogin.php');
+
+header("Location: pupillogin.php");
+exit();
 ?>

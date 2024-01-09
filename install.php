@@ -4,10 +4,9 @@ $stmt = $conn->prepare("DROP TABLE IF EXISTS TblPupils;
 CREATE TABLE TblPupils
 (pupilID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 pupilEmail VARCHAR(50) NOT NULL,
-pupilPassword VARCHAR(50) NOT NULL,
+pupilPassword VARCHAR(5000) NOT NULL,
 pupilForename VARCHAR(50) NOT NULL,
-pupilSurname VARCHAR(50) NOT NULL,
-pupilAvGrade INT(3) NOT NULL)
+pupilSurname VARCHAR(50) NOT NULL)
 
 
 ");
@@ -21,12 +20,12 @@ CREATE TABLE TblTutors
 tutorForename VARCHAR(50) NOT NULL,
 tutorSurname VARCHAR(50) NOT NULL,
 tutorEmail VARCHAR(50) NOT NULL,
-tutorPassword VARCHAR(50) NOT NULL,
+tutorPassword VARCHAR(5000) NOT NULL,
 tutorLocation VARCHAR(20) NOT NULL,
-tutorRating VARCHAR(5) NOT NULL,
+tutorRating VARCHAR(5) NULL,
 tutorSubject VARCHAR(20) NOT NULL,
 tutorDescription VARCHAR(300) NOT NULL,
-image VARCHAR(50) NOT NULL)
+image BLOB)
 
 
 

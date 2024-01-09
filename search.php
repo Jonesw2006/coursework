@@ -67,6 +67,7 @@
 
     </script>
         <?php
+    
     include_once ("connection.php");
     $table = "SELECT * FROM tbltutors";
     $result = $conn->query($table);
@@ -97,7 +98,7 @@
         echo "<td>" . $row["tutorSubject"] . "</td>";
         #this link sends the user to the tutor profile page while also sending the actual variable
         #of the tutor id so that the user ends up on their desired page
-        echo '<td><a href="tutorprofile.php?tutorID=' . $row["tutorID"] . '"> More!</td>';
+        echo '<td><a href="startsession.php?tutorID=' . $row["tutorID"] . '"> More!</td>';
         echo "</tr>";
         
 

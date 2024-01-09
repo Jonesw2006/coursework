@@ -1,29 +1,38 @@
 <?php
-include_once ("connection.php");
-array_map("htmlspecialchars", $_POST);
-$stmt = $conn->prepare("SELECT * FROM TblTutors WHERE tutorEmail =:tutorEmail ;");
-$stmt->bindParam(':tutorEmail', $_POST['tutorEmail']);
-$stmt->execute();
+
+session_start();
+include_once("connection.php");
 
 
+$tutorEmail = htmlspecialchars($_POST['tutorEmail'] ?? '');
+$Pword = htmlspecialchars($_POST['Pword'] ?? '');
 
+// Check if email and password are provided
+if (!empty($tutorEmail) && !empty($Pword)) {
+    $stmt = $conn->prepare("SELECT * FROM tblTutors WHERE tutorEmail = :tutorEmail");
+    $stmt->bindParam(':tutorEmail', $tutorEmail);
+    $stmt->execute();
 
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $hashed = $row['tutorPassword'];
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-    {
-       
-        if($row['tutorPassword']== $_POST['tutorPassword']){
-            #sends user to their profile page when both feilds are entered correctly
-            header('Location: tutorprofile.php');
-            
-        }else{
-            #if password is wrong then sends back to login page
-            header('Location: tutorlogin.php');
-            
+        if (password_verify($Pword, $hashed)) {
+            //Store user information in session
+            $_SESSION['loggedinID'] = $row['tutorID'];
+          
+
+            //goes to the home page if sucsessful 
+            header("Location: tutorspace.php");
+            exit();
+        } else {
+            header("Location: tutorlogin.php"); // Incorrect password
+            exit();
         }
+    }
 }
 
 
-#if email does not exist then sends back to login page
-header('Location: tutorlogin.php');
+header("Location: tutorlogin.php");
+exit();
 ?>

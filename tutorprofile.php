@@ -53,8 +53,10 @@
                 <h2>
                     <?php 
                     include_once ("connection.php");
+                    session_start();
+                    $tutorID = $_SESSION['tutorID'];
                     # getting the tutorID from the get command on the search page
-                    $tutorID = ($_GET["tutorID"]);
+                    
                     #echo $tutorID;
                     $stmt1 = $conn->prepare("SELECT * FROM TblTutors WHERE tutorID =:tutorID ;");
                     $stmt1->bindParam(':tutorID', $tutorID);
@@ -67,7 +69,7 @@
 
                     echo "\n";
                     #gets the photo which corressponds to the tutorID
-                    echo ('<img class="image" src="images/' . $row['image'] . '" alt="' . $row['tutorID'] . '"><br><br>');
+                    echo ('<img class="image" src="displaytutorimage.php?tutorID=' . $row['tutorID'] . '" alt="' . $row['tutorID'] . '"><br><br>');
                     print_r($row["tutorDescription"]);
 
                     #print_r($row["tutorRating"]);
@@ -86,10 +88,13 @@
             <div class="col-sm-6">            
                 <form method="post" action="sendreview.php">
                     <label for="rating">Rating:</label>
-                    <input type="number" name="stars" min="1" max="5" required>
+                    <!-- required tag means that you have to add a review of at least a rating 1-5 before submitting to avoid spam -->
+                    <input type="number" name="stars" min="1" max="5" required> 
                     <label for="text">Comment:</label>
-                    <textarea name="reviewcontent" rows="3"></textarea>
-                    <input type="hidden" name="tutorID" value="tutorID">
+                    <!-- textarea creates a bigger text box to write reviews in order for user to see what they are typing -->
+                    <textarea name="reviewContent" rows="3"></textarea>
+                    <!-- hidden tutor id sends tutor id with form without being seen -->
+                    <input type="hidden" name="tutorID" value="<?php echo $tutorID; ?>">
                     <input type="submit" value="Send Review">
             </div>        
         </h2>

@@ -43,15 +43,15 @@
 
 
 <form action="loginprocess.php" method= "POST">
-    Email:<input type="text" name="pupilEmail"><br>
+    Email: <input type="text" name="pupilEmail"><br>
     Password:<input type="password" name="Pword"><br>
     
     
     <input type="submit" value="Login">
-    <p></p>
-    <!--Sends user to the sign up page--> 
-    Don't have an account? <a href="pupilsignup.php">Sign up</a>
 </form>
+    <!--Sends user to the sign up page--> 
+ <p>Don't have an account? <a href="pupilsignup.php">Sign up</a></p>
+
 
 </body>
 </html>
