@@ -3,9 +3,9 @@
 session_start();
 include_once("connection.php");
 
-
-$tutorEmail = htmlspecialchars($_POST['tutorEmail'] ?? '');
-$Pword = htmlspecialchars($_POST['Pword'] ?? '');
+array_map("htmlspecialchars", $_POST);
+//$tutorEmail = htmlspecialchars($_POST['tutorEmail'] ?? '');
+//$Pword = htmlspecialchars($_POST['Pword'] ?? '');
 
 // Check if email and password are provided
 if (!empty($tutorEmail) && !empty($Pword)) {
@@ -19,7 +19,7 @@ if (!empty($tutorEmail) && !empty($Pword)) {
 
         if (password_verify($Pword, $hashed)) {
             //Store user information in session
-            $_SESSION['loggedinID'] = $row['tutorID'];
+            $_SESSION['tutorloggedinID'] = $row['tutorID'];
           
 
             //goes to the home page if sucsessful 

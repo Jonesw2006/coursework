@@ -52,9 +52,12 @@
                 
                 <h2>
                     <?php 
+                    
                     include_once ("connection.php");
                     session_start();
+                    
                     $tutorID = $_SESSION['tutorID'];
+                    
                     # getting the tutorID from the get command on the search page
                     
                     #echo $tutorID;
@@ -74,7 +77,7 @@
 
                     #print_r($row["tutorRating"]);
                     #gets the corresponding photo of the amount of stars which the tutor has on their profile
-                    echo ('<img class="image" src="rateimg/' . $row['tutorRating'] . '" alt="' . $row['tutorID'] . '"><br><br>');
+                    echo ('<img class="image" src="rateimg/' . $row['tutorRating'] . ".png" . '" alt="' . $row['tutorID'] . '"><br><br>');
                     print_r($row["tutorLocation"]);
 
                     #sends user to the checkout page with the tutors id attached to the link
@@ -96,6 +99,48 @@
                     <!-- hidden tutor id sends tutor id with form without being seen -->
                     <input type="hidden" name="tutorID" value="<?php echo $tutorID; ?>">
                     <input type="submit" value="Send Review">
+                </form>
+                <?php
+   
+    include_once ("connection.php");
+    $tutorID = $_SESSION['tutorID'];
+    $table = "SELECT tblreview.stars,tblreview.reviewContent,tblpupils.pupilForename FROM tblreview JOIN tblpupils ON tblreview.pupilID = tblpupils.pupilID WHERE tblreview.tutorID = $tutorID";
+    $result = $conn->query($table);
+    
+    if ($result->rowCount() > 0) {
+        #this sets the table's id 
+        echo "<table border='1' id='reviews'>";
+        #This creates the table titles, for the search table
+        echo "<tr>";
+        echo "<th>Name</th>";
+        echo "<th>Rating</th>";
+        echo "<th>Comment</th>";
+        echo "</tr>";
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+        
+
+
+        
+        echo "<tr>";
+        
+        echo "<td>" . $row["pupilForename"] . "</td>";
+
+        echo "<td><img class='image' style='width:100%;' src='rateimg/" . $row["stars"] . ".png" . "'></td>";
+        echo "<td>" . $row["reviewContent"] . "</td>";
+    
+        echo "</tr>";
+        
+
+        
+
+
+        }
+        echo "</table>";
+    }
+    
+    ?>
+                    
             </div>        
         </h2>
         </div>

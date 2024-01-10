@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <!--Declaring what document type this is --> 
+
+
 <html>
 <head>
 
@@ -39,7 +41,8 @@
 
 
 <!--signup process -->
-<form action="addtutors.php" method="post" enctype="multipart/form-data"> <!-- the enctype ensures that files can be uploaded --> 
+    <!-- the enctype ensures that files can be uploaded --> 
+<form action="addtutors.php" method="post" enctype="multipart/form-data"> 
     <!--Form links to the addpupils.php process when posted -->
     First Name *:<input type="text" name="tutorforename"><br>
     Last Name *:<input type="text" name="tutorsurname"><br>
@@ -49,7 +52,12 @@
     Location:<input type="text" name="tutorlocation"><br>
     Description:<input type="text" name="tutordescription"><br>
     Subject:<input type="text" name="tutorsubject"><br>
+    <!--<input type="hidden" name="tutorrating" value="0"><br> -->
+    
+    Start Time:<input type="time" name="starttime"><br>
+    End Time:<input type="time" name="endtime"><br>  
     Image: <input type="file" id="image" name="piccy" accept="image/*"><br> 
+
 
     
     <input type="submit" value="Create Account">

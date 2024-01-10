@@ -12,18 +12,25 @@ try{
 	$hashed_password = password_hash($_POST["tutorpassword"], PASSWORD_DEFAULT);
 	
 	// adding values to tutor table
-	$stmt = $conn->prepare("INSERT INTO tbltutors (tutorID, tutorForename, tutorSurname, tutorEmail, tutorPassword, tutorLocation, tutorRating, tutorSubject, tutorDescription, image) VALUES (NULL, :tutorforename, :tutorsurname, :tutoremail, :tutorpassword, :tutorlocation, NULL, :tutorsubject, :tutordescription, :image)");
+	$stmt = $conn->prepare("INSERT INTO tbltutors (tutorID, tutorForename, tutorSurname, tutorEmail, tutorPassword, tutorLocation, tutorRating, tutorSubject, tutorDescription, dayofWeek, startTime, endTime, image) VALUES (NULL, :tutorforename, :tutorsurname, :tutoremail, :tutorpassword, :tutorlocation, NULL, :tutorsubject, :tutordescription, :dayofweek, :starttime, :endtime, :image)");
 	
 	$stmt->bindParam(':tutorforename', $_POST["tutorforename"]);
 	$stmt->bindParam(':tutorsurname', $_POST["tutorsurname"]);
 	$stmt->bindParam(':tutoremail', $_POST["tutoremail"]);
 	$stmt->bindParam(':tutorpassword', $hashed_password);
 	$stmt->bindParam(':tutorlocation', $_POST["tutorlocation"]);
+	
 	$stmt->bindParam(':tutorsubject', $_POST["tutorsubject"]);
 	$stmt->bindParam(':tutordescription', $_POST["tutordescription"]);
+
+	$stmt->bindParam(':dayofweek', $_POST["dayofweek"]);
+	$stmt->bindParam(':starttime', $_POST["starttime"]);
+	$stmt->bindParam(':endtime', $_POST["endtime"]);
 	
 	$imageContent = file_get_contents($_FILES["piccy"]["tmp_name"]);
 	$stmt->bindParam(':image', $imageContent, PDO::PARAM_LOB);
+
+
 	
 	$stmt->execute();
 	}

@@ -44,7 +44,7 @@
 
 <form action="tutorloginprocess.php" method= "POST">
     Email:<input type="text" name="tutorEmail"><br>
-    Password:<input type="password" name="tutorPassword"><br>
+    Password:<input type="password" name="Pword"><br>
     
     
     <input type="submit" value="Login">

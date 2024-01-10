@@ -3,11 +3,11 @@
 session_start();
 include_once("connection.php");
 
+//validation
+$pupilEmail = htmlspecialchars($_POST['pupilEmail']);
+$Pword = htmlspecialchars($_POST['Pword']);
 
-$pupilEmail = htmlspecialchars($_POST['pupilEmail'] ?? '');
-$Pword = htmlspecialchars($_POST['Pword'] ?? '');
-
-// Check if email and password are provided
+// validation to if email and password are provided
 if (!empty($pupilEmail) && !empty($Pword)) {
     $stmt = $conn->prepare("SELECT pupilID, pupilPassword, pupilForename, pupilSurname FROM tblpupils WHERE pupilEmail = :pupilEmail");
     $stmt->bindParam(':pupilEmail', $pupilEmail);

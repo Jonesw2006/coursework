@@ -1,11 +1,11 @@
 <?php
 session_start();
 include_once("connection.php");
-
+include 'starsavg.php';
 
 $tutorID = intval($_POST['tutorID']);
-$rating = intval($_POST['stars']); 
-$comment = htmlspecialchars($_POST['reviewContent']);
+$stars = intval($_POST['stars']); 
+$reviewContent = htmlspecialchars($_POST['reviewContent']);
 
 $pupilID = $_SESSION['loggedinID']; // takes pupilid from the login page
 
@@ -18,7 +18,9 @@ $stmt->bindParam(':reviewContent', $reviewContent);
 
 $stmt->execute();
 
-// Redirect to the tutor's profile page or wherever is appropriate
+avgstars($tutorID);
+
+// Redirect to the tutor's profile page 
 header("Location: tutorprofile.php?tutorID=" . $tutorID);
 exit();
 ?>

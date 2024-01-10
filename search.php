@@ -94,7 +94,7 @@
        #this displays each value for each tutor in the table
         echo "<td>" . $row["tutorForename"] . "</td>";
         echo "<td>" . $row["tutorLocation"] . "</td>";
-        echo "<td><img class='image' style='width:100%;' src='rateimg/" . $row["tutorRating"] . "'></td>";
+        echo "<td><img class='image' style='width:100%;' src='rateimg/" . $row["tutorRating"] . ".png" . "'></td>";
         echo "<td>" . $row["tutorSubject"] . "</td>";
         #this link sends the user to the tutor profile page while also sending the actual variable
         #of the tutor id so that the user ends up on their desired page

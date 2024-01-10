@@ -23,11 +23,7 @@
                 <a href="tutorspace.php">Tutor Space</a>
 
                 
-            </li>
-
-
-
-            
+            </li>            
             <!-- Sign up and login links -->
             <li><a href="pupillogin.php">Login</a></li>
             <li><a href="pupilsignup.php">Sign Up</a></li>
@@ -35,27 +31,25 @@
     </ul>
     </nav>
 
-    <?php 
-        include_once ("connection.php");
-            # getting the tutorID from the get command on the search page
-            $tutorID = ($_GET["tutorID"]);
-            #echo $tutorID;
-            $stmt1 = $conn->prepare("SELECT * FROM TblTutors WHERE tutorID =:tutorID ;");
-            $stmt1->bindParam(':tutorID', $tutorID);
-            $stmt1->execute();
+    <form action="order.php" method="post"> 
+    <!--Form links to the order.php process when posted -->
+    Session Date:<input type="date" name="sessiondate"><br>
+    Session Time:<input type="time" name="sessiontime" step="1"><br>
+    Address Line 1 *:<input type="text" name="addressline1"><br>
+    Address Line 2 *:<input type="text" name="addressline2"><br>
+    Address Line 3 *:<input type="text" name="addressline3"><br>
+    Postcode *:<input type="text" name="postcode"><br>
+    
+
+    
+    Method:<input type="text" name="online"><br>
+    
+    <p></p>
+    <input type="submit" value="Create Booking">
+    
 
 
-            #while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
-            #{
-#
- #               print_r($row["tutorForename"]);
-  #              print_r($row["tutorEmail"])
-   #             
-    #        }
 
-
-
-        ?>
 
 
 

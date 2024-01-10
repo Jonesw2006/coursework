@@ -18,7 +18,7 @@ try{
     $stmt->bindParam(':pupilforename', $_POST["pupilforename"]);
 	
 	$stmt->bindParam(':pupilpassword', $hashed_password);
-	#calling the hashedpassword for security/*  */
+	#calling the hashedpassword for security
   
     $stmt->bindParam(':pupilsurname', $_POST["pupilsurname"]);
 

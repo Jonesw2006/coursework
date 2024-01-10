@@ -25,6 +25,8 @@ tutorLocation VARCHAR(20) NOT NULL,
 tutorRating VARCHAR(5) NULL,
 tutorSubject VARCHAR(20) NOT NULL,
 tutorDescription VARCHAR(300) NOT NULL,
+startTime TIME NOT NULL,
+endTime TIME NOT NULL,
 image BLOB)
 
 
@@ -50,28 +52,33 @@ reviewContent VARCHAR(500))
 $stmt->execute();
 
 
-$stmt = $conn->prepare("DROP TABLE IF EXISTS TblBasket;
-CREATE TABLE TblBasket
-(orderID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+$stmt = $conn->prepare("DROP TABLE IF EXISTS TblSessions;
+CREATE TABLE TblSessions
+(sessionID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 pupilID INT(4) NOT NULL,
 tutorID INT(4) NOT NULL,
-date VARCHAR(30))
+addressLine1 VARCHAR(50) NOT NULL,
+addressLine2 VARCHAR(50) NOT NULL,
+addressLine3 VARCHAR(50) NOT NULL,
+postcode VARCHAR(10) NOT NULL,
+online VARCHAR(15) NOT NULL,
+sessionDate DATE NOT NULL,
+sessionTime TIME NOT NULL)
 
 
 
 
 ");
-//This creates the basket table
+//This creates the sessions table
 $stmt->execute();
 
 
 
 
-$stmt->execute();
 
 
 
-$stmt = $conn->prepare("INSERT INTO TblPupils (pupilID, pupilEmail, pupilPassword, pupilForename, pupilSurname, pupilAvGrade) VALUES ('0001', 'jones.wb@oundleschool.org.uk', 'Test123!', 'Will', 'Jones', '0' ) ");
-$stmt->execute();
+
+
 
 ?>
