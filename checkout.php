@@ -24,9 +24,10 @@
 
                 
             </li>            
+            <li><a href="pupilprofile.php">Pupil Profile</a></li>
             <!-- Sign up and login links -->
-            <li><a href="pupillogin.php">Login</a></li>
-            <li><a href="pupilsignup.php">Sign Up</a></li>
+            <li><a href="logout.php">Log Out</a></li>
+            
         </div>
     </ul>
     </nav>
@@ -34,7 +35,7 @@
     <form action="order.php" method="post"> 
     <!--Form links to the order.php process when posted -->
     Session Date:<input type="date" name="sessiondate"><br>
-    Session Time:<input type="time" name="sessiontime" step="1"><br>
+    Session Time:<input type="time" name="sessiontime"><br>
     Address Line 1 *:<input type="text" name="addressline1"><br>
     Address Line 2 *:<input type="text" name="addressline2"><br>
     Address Line 3 *:<input type="text" name="addressline3"><br>

@@ -52,7 +52,7 @@
     Location:<input type="text" name="tutorlocation"><br>
     Description:<input type="text" name="tutordescription"><br>
     Subject:<input type="text" name="tutorsubject"><br>
-    <!--<input type="hidden" name="tutorrating" value="0"><br> -->
+    <input type="hidden" name="tutorrating" value="0"><br> 
     
     Start Time:<input type="time" name="starttime"><br>
     End Time:<input type="time" name="endtime"><br>  

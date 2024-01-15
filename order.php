@@ -8,9 +8,12 @@ $pupilID = $_SESSION['loggedinID'];
 $sessionDate = $_POST['sessiondate'];
 
 
-$sessionTime = ($_POST['sessiontime']);
+$sessionTime = $_POST['sessiontime'];
 
-echo $sessionTime;
+if($pupilID==0){
+    header('Location: pupillogin.php');
+    //redirects if not signed in 
+}
 
 
 
@@ -18,15 +21,24 @@ try{
     include_once('connection.php');
   
 
-   // $query = "SELECT * FROM tblsessions WHERE $tutorID = tutorID AND $sessionDate = sessiondate AND $sessionTime = sessiontime";
-   // $stmt1 = $conn->query($query);
+   $query = "SELECT * FROM tblsessions
+   JOIN tbltutors ON tblsessions.tutorID = tbltutors.tutorID
+   WHERE tblsessions.tutorID = '$tutorID'
+   AND tblsessions.sessionDate = '$sessionDate'
+   AND tblsessions.sessionTime = '$sessionTime' ";
+   $stmt1 = $conn->query($query);
+   $stmt1->execute();
 
+   //$query2 = "SELECT * FROM tbltutors WHERE '$sessionTime' NOT BETWEEN tbltutors.endTime  
+   //AND tbltutors.startTime ";
+   //$stmt2 = $conn->query($query2);
+   //$stmt2->execute();
    
 
-   // if($stmt1->fetch(PDO::FETCH_ASSOC)) {
-        //echo "<p style='color: red;'> SESSION ALREADY BOOKED</p>";
-  //  } else {
-        $stmt = $conn->prepare("INSERT INTO tblsessions (sessionID, pupilID, tutorID, addressLine1, addressLine2, addressLine3, postcode, online, sessionDate, sessionTime )VALUES (NULL,:pupilID,:tutorID,:addressline1,:addressline2,:addressline3,:postcode,:online,:sessiondate,:sessiontime)");
+   if($stmt1->rowCount() > 0)  {
+        echo "<p style='color: red;'> SESSION ALREADY BOOKED/TIME UNAVAILABLE</p>";
+    } else {
+        $stmt = $conn->prepare("INSERT INTO tblsessions (sessionID, pupilID, tutorID, addressLine1, addressLine2, addressLine3, postcode, online, sessionDate, sessionTime )VALUES (NULL, :pupilID,:tutorID,:addressline1,:addressline2,:addressline3,:postcode,:online,:sessiondate,:sessiontime)");
         
         $stmt->bindParam(':pupilID', $pupilID);
         $stmt->bindParam(':tutorID', $tutorID);
@@ -39,7 +51,9 @@ try{
         $stmt->bindParam(':sessiontime', $sessionTime);
 
         $stmt->execute();
+        echo "Booking Successful, you tutor will be in contact soon";
     }
+}
     
     
 

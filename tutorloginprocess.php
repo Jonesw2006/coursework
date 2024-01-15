@@ -3,9 +3,8 @@
 session_start();
 include_once("connection.php");
 
-array_map("htmlspecialchars", $_POST);
-//$tutorEmail = htmlspecialchars($_POST['tutorEmail'] ?? '');
-//$Pword = htmlspecialchars($_POST['Pword'] ?? '');
+$tutorEmail = htmlspecialchars($_POST['tutorEmail'] ?? '');
+$Pword = htmlspecialchars($_POST['Pword'] ?? '');
 
 // Check if email and password are provided
 if (!empty($tutorEmail) && !empty($Pword)) {
@@ -24,6 +23,7 @@ if (!empty($tutorEmail) && !empty($Pword)) {
 
             //goes to the home page if sucsessful 
             header("Location: tutorspace.php");
+
             exit();
         } else {
             header("Location: tutorlogin.php"); // Incorrect password

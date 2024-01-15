@@ -18,7 +18,7 @@ if (!empty($pupilEmail) && !empty($Pword)) {
         $hashed = $row['pupilPassword'];
 
         if (password_verify($Pword, $hashed)) {
-            //Store user information in session
+            //Store pupil information in session
             $_SESSION['loggedinID'] = $row['pupilID'];
           
 

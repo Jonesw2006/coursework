@@ -37,6 +37,7 @@
             <!-- Sign up and login links -->
             <li><a href="pupillogin.php">Login</a></li>
             <li><a href="pupilsignup.php">Sign Up</a></li>
+            <li><a href="logout.php">Log Out</a></li>
         </div>
     </ul>
     </nav>
